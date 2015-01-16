@@ -22,12 +22,12 @@ public class MusicOrganizer
     /**
      * Create a MusicOrganizer
      */
-    public MusicOrganizer()
+    public MusicOrganizer(String origenArchivos)
     {
         tracks = new ArrayList<Track>();
         player = new MusicPlayer();
         reader = new TrackReader();
-        readLibrary("audio");
+        readLibrary(origenArchivos);
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();
         isPlaying = false;
