@@ -15,6 +15,8 @@ public class Track
     private String filename;
     //Llevar la cuenta de reproducciones
     private int playCount;
+    //Puntua la cancion de 1 a 10
+    private int points;
     
     /**
      * Constructor for objects of class Track.
@@ -26,6 +28,7 @@ public class Track
     {
         setDetails(artist, title, filename);
         playCount = 0;
+        points = 0;
     }
     
     /**
@@ -73,7 +76,7 @@ public class Track
      */
     public String getDetails()
     {
-        return artist + ": " + title + "  (file: " + filename + ")";
+        return artist + ": " + title + "  (file: " + filename + ")\nPuntuación: " + points;
     }
     
     /**
@@ -105,5 +108,22 @@ public class Track
      */
     public int getPlayCount(){
         return playCount;
+    }
+    /**
+     * Fija los puntos asignados a la cancion
+     */
+    public void setPoints(int points){
+        if((points >= 0) && (points <= 10)){
+            this.points = points;
+        }
+        else if(points > 10){
+            this.points = 10;
+        }
+    }
+    /**
+     * Devuelve el valor de puntos
+     */
+    public int getPoints(){
+        return points;
     }
 }

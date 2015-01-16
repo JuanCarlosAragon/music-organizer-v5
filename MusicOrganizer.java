@@ -185,4 +185,15 @@ public class MusicOrganizer
             }
         }
     }
+    /**
+     * Fija los puntos a una determinada cancion
+     */
+    public void setPoints(String titleOfTrack, int points){
+        for(Track track : tracks){
+            if(track.getTitle().contains(titleOfTrack)){
+                track.setPoints(points);
+            }
+        }
+        
+    }
 }
