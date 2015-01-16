@@ -57,12 +57,17 @@ public class MusicOrganizer
     public void playTrack(int index)
     {
         if(indexValid(index)) {
-            Track track = tracks.get(index);
-            player.startPlaying(track.getFilename());
-            System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
-            track.incrementPlayCount();
-            System.out.println("Reproducciones realizadas: " + track.getPlayCount());
-            isPlaying = true;
+            if(isPlaying){
+                System.out.println("ERROR: El reproductor ya está en funcionamiento");
+            }
+            else{
+                Track track = tracks.get(index);
+                player.startPlaying(track.getFilename());
+                System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
+                track.incrementPlayCount();
+                System.out.println("Reproducciones realizadas: " + track.getPlayCount());
+                isPlaying = true;
+            }
         }
     }
     
@@ -129,11 +134,16 @@ public class MusicOrganizer
     public void playFirst()
     {
         if(tracks.size() > 0) {
-            player.startPlaying(tracks.get(0).getFilename());
-            Track track = tracks.get(0);
-            track.incrementPlayCount();
-            System.out.println("Reproducciones realizadas: " + track.getPlayCount());
-            isPlaying = true;
+            if(isPlaying){
+                System.out.println("Error: El reproductor ya está en funcionamiento");
+            }
+            else{
+                player.startPlaying(tracks.get(0).getFilename());
+                Track track = tracks.get(0);
+                track.incrementPlayCount();
+                System.out.println("Reproducciones realizadas: " + track.getPlayCount());
+                isPlaying = true;
+            }
         }
     }
     
