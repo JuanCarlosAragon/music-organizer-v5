@@ -170,4 +170,14 @@ public class MusicOrganizer
             addTrack(track);
         }
     }
+    /**
+     * Muestra por pantalla las canciones que contienen el titulo pasado como parametro
+     */
+    public void findIntTitle(String titulo){
+        for(Track cancion : tracks) {
+            if(cancion.getTitle().contains(titulo)){
+                System.out.println(cancion.getTitle());
+            }
+        }
+    }
 }
