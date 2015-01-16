@@ -57,6 +57,8 @@ public class MusicOrganizer
             Track track = tracks.get(index);
             player.startPlaying(track.getFilename());
             System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
+            track.incrementPlayCount();
+            System.out.println("Reproducciones realizadas: " + track.getPlayCount());
         }
     }
     
@@ -124,6 +126,9 @@ public class MusicOrganizer
     {
         if(tracks.size() > 0) {
             player.startPlaying(tracks.get(0).getFilename());
+            Track track = tracks.get(0);
+            track.incrementPlayCount();
+            System.out.println("Reproducciones realizadas: " + track.getPlayCount());
         }
     }
     

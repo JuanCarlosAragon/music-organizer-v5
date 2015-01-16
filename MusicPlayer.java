@@ -53,6 +53,7 @@ public class MusicPlayer
      */
     public void startPlaying(final String filename)
     {
+        
         try {
             setupPlayer(filename);
             Thread playerThread = new Thread() {
