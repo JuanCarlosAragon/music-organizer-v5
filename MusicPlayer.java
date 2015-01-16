@@ -147,5 +147,11 @@ public class MusicPlayer
     {
         System.out.println("There was a problem playing: " + filename);
     }
-
+    public boolean isPlaying(){
+        boolean isPlaying = false;
+        if(player!=null){
+            isPlaying = true;
+        }
+        return isPlaying;
+    }
 }

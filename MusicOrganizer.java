@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -254,5 +255,38 @@ public class MusicOrganizer
         Random rnd = new Random();
         int numeroAleatorio = (int)((rnd.nextDouble()*(tracks.size()-1)));
         playTrack(numeroAleatorio);
+    }
+    /**
+     * Reproduce los primeros segundos de todas las canciones en orden aleatorio
+     * pero solo una vez
+     */
+    public void playShuffle(){
+        Collections.shuffle(tracks);
+        for(Track track : tracks){
+            player.playSample(track.getFilename());
+        }
+    }
+    /**
+     * Reproduce los primeros segundos de todas las canciones en orden aleatorio 
+     * pero solo una vez
+     */
+    public void playShuffle2(){
+        //Inicializamos el Random
+        Random rnd = new Random();
+        //Inicializamos el ArrayList y lo copiamos de tracks
+        ArrayList<Track> bateriaCanciones = new ArrayList<Track>();
+        bateriaCanciones = (ArrayList)tracks.clone();
+        //Mientras halla canciones en el Array y el reproductor esté parado.
+        while((bateriaCanciones.size()!= 0) && (isPlaying == false))
+        {
+            int numeroAleatorio = (int)((rnd.nextDouble()*(bateriaCanciones.size()-1)));            
+            Track track = bateriaCanciones.get(numeroAleatorio);
+            player.playSample(track.getFilename());
+            while(player.isPlaying()){
+                isPlaying = true;
+            }
+            isPlaying = false;
+            bateriaCanciones.remove(numeroAleatorio);
+        }
     }
 }
